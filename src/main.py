@@ -1,5 +1,7 @@
+from algorithms.dynamic_programming import *
+
 def main():
-    print("Hello, World!")
+    print(backpack_dynamic_programing(1, 1))
 
 if __name__ == "__main__":
     main()

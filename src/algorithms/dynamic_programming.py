@@ -1,7 +1,7 @@
-from src.utils import readInstance
+import utils as ut
 
 def backpack_dynamic_programing(experiment, instance):
-    W, items = readInstance(experiment, instance)
+    W, items = ut.read_instance(experiment, instance)
     return dynamic_programming(W, items)
 
 def dynamic_programming(W, items):

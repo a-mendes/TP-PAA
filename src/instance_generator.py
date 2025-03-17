@@ -1,9 +1,6 @@
 import os
 import random
-from consts import EXPERIMENT_1_DIR, EXPERIMENT_2_DIR
-
-WEIGHT_MAX = 30
-VALUE_MAX = 100
+from consts import *
 
 def generate_experiment_1():
     n = 100

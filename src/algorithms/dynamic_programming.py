@@ -12,7 +12,7 @@ def backpack_dynamic_programing(experiment, instance):
     execution_time = end_time - start_time
     print(f"Execution time: {execution_time:.6f} seconds")
 
-    log_tuple = (len(items), execution_time)
+    log_tuple = (W, len(items), execution_time)
 
     ut.save_logs(experiment, instance, c.DYANMIC_PROGRAMMING, c.EXECUTION_TIME, log_tuple)
     ut.save_logs(experiment, instance, c.DYANMIC_PROGRAMMING, c.SOLUTION_VALUE, solution)

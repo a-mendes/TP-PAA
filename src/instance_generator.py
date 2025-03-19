@@ -5,7 +5,7 @@ from consts import *
 def generate_experiment_1():
     n = 100
     for i in range(1, 21):
-        W = random.randint(0, 10 * n)  
+        W = 100  
         items = [(random.randint(1, WEIGHT_MAX), random.randint(1, VALUE_MAX)) for _ in range(n)] 
 
         filename = f'{EXPERIMENT_1_DIR}/{i}.txt'

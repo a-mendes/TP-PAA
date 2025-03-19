@@ -1,5 +1,6 @@
 
 /src/__pycache__
-/instances
+/instances/experiment_1/*.txt
+/instances/experiment_2/*.txt
 src/algorithms/__pycache__/dynamic_programming.cpython-312.pyc
 /src/algorithms/__pycache__

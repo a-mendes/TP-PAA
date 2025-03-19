@@ -4,6 +4,8 @@ import utils as ut
 def experiment_1_dynamic_programming():
 
     instance_start = ut.last_instance_executed(1, ut.c.DYANMIC_PROGRAMMING)
+    if(instance_start == 0):
+        ut.delete_logs(1, ut.c.DYANMIC_PROGRAMMING);
 
     for i in range(instance_start + 1, 21):
         print(f"Instance {i}")

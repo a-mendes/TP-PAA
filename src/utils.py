@@ -93,4 +93,5 @@ def plot_results(experiment):
     ax.set_ylabel('Tempo de execução (s)')
     ax.set_xlabel('Instância')
     ax.legend(['Programação Dinâmica', 'Branch and Bound'])
-    ax.get_figure().savefig(f'Experimento_{experiment}.png')
+    #Preciso criar a pasta images na raiz do projeto
+    ax.figure.savefig(f'images/experiment_{experiment}.png')

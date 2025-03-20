@@ -3,7 +3,7 @@ import consts as c
 import numpy as np
 import time
 
-def backpack_dynamic_programing(experiment, instance):
+def execute(experiment, instance):
     W, items = ut.read_instance(experiment, instance)
     
     start_time = time.time()
@@ -14,9 +14,9 @@ def backpack_dynamic_programing(experiment, instance):
 
     log_tuple = (W, len(items), execution_time)
 
-    ut.save_logs(experiment, instance, c.DYANMIC_PROGRAMMING, c.EXECUTION_TIME, log_tuple)
-    ut.save_logs(experiment, instance, c.DYANMIC_PROGRAMMING, c.SOLUTION_VALUE, solution)
-    ut.save_logs(experiment, instance, c.DYANMIC_PROGRAMMING, c.LAST_INSTANCE_EXECUTED, instance, 'w')
+    ut.save_logs(experiment, instance, c.DYNAMIC_PROGRAMMING, c.EXECUTION_TIME, log_tuple)
+    ut.save_logs(experiment, instance, c.DYNAMIC_PROGRAMMING, c.SOLUTION_VALUE, solution)
+    ut.save_logs(experiment, instance, c.DYNAMIC_PROGRAMMING, c.LAST_INSTANCE_EXECUTED, instance, 'w')
 
     return solution
 

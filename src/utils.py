@@ -1,6 +1,7 @@
 import os
 from consts import EXPERIMENT_1_DIR, EXPERIMENT_2_DIR, LOG_DIR
 import consts as c
+import pandas as pd
 
 def read_instance(experiment, instance):
     if experiment not in [1, 2] or not (1 <= instance <= 20):
@@ -60,3 +61,36 @@ def delete_logs(experiment, algorithm):
             if os.path.isfile(file_path):
                 os.remove(file_path)
     
+
+def read_results(experiment, algorithm):
+    base_path = os.path.join(EXPERIMENT_1_DIR if experiment == 1 else EXPERIMENT_2_DIR, LOG_DIR, algorithm)
+    if not os.path.exists(base_path):
+        return [0] * 20
+
+    file_path = os.path.join(base_path, f'{algorithm}_{c.EXECUTION_TIME}_logs.txt')
+    if not os.path.exists(file_path):
+        return [0] * 20
+    
+    with open(file_path, 'r') as file:
+        lines = file.readlines()
+        results = [float(line.strip().split('\t')[2]) for line in lines]
+
+    return results
+
+def plot_results(experiment):
+    dynamic_programming_results = read_results(experiment, c.DYNAMIC_PROGRAMMING)
+    branch_and_bound_results = read_results(experiment, c.BRANCH_AND_BOUND)
+    # backtracking_results = read_results(experiment, c.BACKTRACKING)
+
+    df = pd.DataFrame({
+        'Instance': range(1, 10),
+        'Dynamic Programming': dynamic_programming_results,
+        'Branch and Bound': branch_and_bound_results,
+        # 'Backtracking': backtracking_results
+    })
+
+    ax = df.plot(x='Instance', y=['Dynamic Programming', 'Branch and Bound'], kind='bar', title=f'Experimento {experiment}')
+    ax.set_ylabel('Tempo de execução (s)')
+    ax.set_xlabel('Instância')
+    ax.legend(['Programação Dinâmica', 'Branch and Bound'])
+    ax.get_figure().savefig(f'Experimento_{experiment}.png')

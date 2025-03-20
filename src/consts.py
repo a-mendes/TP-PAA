@@ -8,6 +8,7 @@ VALUE_MAX = 100
 #Algorithm Types
 DYNAMIC_PROGRAMMING = 'dynamic_programming'
 BRANCH_AND_BOUND = 'branch_and_bound'
+BACKTRACKING = 'backtracking'
 
 #Log Types
 EXECUTION_TIME = 'execution_time'

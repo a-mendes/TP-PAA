@@ -3,6 +3,7 @@ import algorithms.branch_and_bound as bd
 import utils as ut
 
 def experiment_dynamic_programming(experiment):
+    print("\nDynamic programming\n")
     instance_start = ut.last_instance_executed(experiment, ut.c.DYNAMIC_PROGRAMMING)
     if(instance_start == 0):
         ut.delete_logs(experiment, ut.c.DYNAMIC_PROGRAMMING)
@@ -13,6 +14,7 @@ def experiment_dynamic_programming(experiment):
         dp.execute(experiment, i)
 
 def experiment_branch_and_bound(experiment):
+    print("\nBranch and bound\n")
     instance_start = ut.last_instance_executed(experiment, ut.c.BRANCH_AND_BOUND)
     if(instance_start == 0):
         ut.delete_logs(experiment, ut.c.BRANCH_AND_BOUND)
@@ -25,18 +27,23 @@ def experiment_branch_and_bound(experiment):
 def experiment_backtracking(experiment):
     pass
 
+def plot_results(experiment):
+    ut.plot_results(experiment)
+    ut.plot_results(experiment)
+    # ut.plot_results(experiment)
+
 def start_experiments(experiment):
     experiment_dynamic_programming(experiment)
     experiment_branch_and_bound(experiment)
     experiment_backtracking(experiment)
-
+    plot_results(experiment)
 
 def main():
     print("Experiment 1")
     start_experiments(1)
 
     print("Experiment 2")
-    start_experiments(1)
+    start_experiments(2)
 
 if __name__ == "__main__":
     main()

@@ -1,8 +1,24 @@
 import utils as ut
 import consts as c
-import numpy as np
 import time
 
+def execute(experiment, instance):
+    W, items = ut.read_instance(experiment, instance)
+    
+    start_time = time.time()
+    solution = knapsack_branch_and_bound(W, items)
+    end_time = time.time()
+    execution_time = end_time - start_time
+    print(f"Execution time: {execution_time:.6f} seconds")
+
+    log_tuple = (W, len(items), execution_time)
+
+    ut.save_logs(experiment, instance, c.BRANCH_AND_BOUND, c.EXECUTION_TIME, log_tuple)
+    ut.save_logs(experiment, instance, c.BRANCH_AND_BOUND, c.SOLUTION_VALUE, solution)
+    ut.save_logs(experiment, instance, c.BRANCH_AND_BOUND, c.LAST_INSTANCE_EXECUTED, instance, 'w')
+
+    return solution
+    
 def knapsack_branch_and_bound(W, items):
     n = len(items)
     items = sorted(items, key=lambda x: x[1] / x[0], reverse=True)
@@ -35,20 +51,4 @@ def knapsack_branch_and_bound(W, items):
 
     return best_value
 
-def execute(experiment, instance):
-    W, items = ut.read_instance(experiment, instance)
-    
-    start_time = time.time()
-    solution = knapsack_branch_and_bound(W, items)
-    end_time = time.time()
-    execution_time = end_time - start_time
-    print(f"Execution time: {execution_time:.6f} seconds")
 
-    log_tuple = (W, len(items), execution_time)
-
-    ut.save_logs(experiment, instance, c.BRANCH_AND_BOUND, c.EXECUTION_TIME, log_tuple)
-    ut.save_logs(experiment, instance, c.BRANCH_AND_BOUND, c.SOLUTION_VALUE, solution)
-    ut.save_logs(experiment, instance, c.BRANCH_AND_BOUND, c.LAST_INSTANCE_EXECUTED, instance, 'w')
-
-    return solution
-    

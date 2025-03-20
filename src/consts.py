@@ -6,7 +6,8 @@ WEIGHT_MAX = 30
 VALUE_MAX = 100
 
 #Algorithm Types
-DYANMIC_PROGRAMMING = 'dynamic_programming'
+DYNAMIC_PROGRAMMING = 'dynamic_programming'
+BRANCH_AND_BOUND = 'branch_and_bound'
 
 #Log Types
 EXECUTION_TIME = 'execution_time'

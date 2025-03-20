@@ -8,8 +8,7 @@ def experiment_dynamic_programming(experiment):
     if(instance_start == 0):
         ut.delete_logs(experiment, ut.c.DYNAMIC_PROGRAMMING)
 
-    # for i in range(instance_start + 1, 21):
-    for i in range(instance_start + 1, 10):
+    for i in range(instance_start + 1, 21):
         print(f"Instance {i}")
         dp.execute(experiment, i)
 
@@ -19,8 +18,7 @@ def experiment_branch_and_bound(experiment):
     if(instance_start == 0):
         ut.delete_logs(experiment, ut.c.BRANCH_AND_BOUND)
 
-    # for i in range(instance_start + 1, 21):
-    for i in range(instance_start + 1, 10):
+    for i in range(instance_start + 1, 21):
         print(f"Instance {i}")
         bd.execute(experiment, i)
 

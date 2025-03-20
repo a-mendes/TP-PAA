@@ -83,7 +83,7 @@ def plot_results(experiment):
     # backtracking_results = read_results(experiment, c.BACKTRACKING)
 
     df = pd.DataFrame({
-        'Instance': range(1, 10),
+        'Instance': range(1, 21),
         'Dynamic Programming': dynamic_programming_results,
         'Branch and Bound': branch_and_bound_results,
         # 'Backtracking': backtracking_results
@@ -94,4 +94,6 @@ def plot_results(experiment):
     ax.set_xlabel('Instância')
     ax.legend(['Programação Dinâmica', 'Branch and Bound'])
     #Preciso criar a pasta images na raiz do projeto
+    if not os.path.exists('images'):
+        os.makedirs('images')
     ax.figure.savefig(f'images/experiment_{experiment}.png')

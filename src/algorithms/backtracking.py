@@ -6,7 +6,7 @@ def execute(experiment, instance):
     W, items = ut.read_instance(experiment, instance)
     
     start_time = time.time()
-    solution = backtracking(W, items)
+    solution = alg_backtracking(W, items)
     end_time = time.time()
     execution_time = end_time - start_time
     print(f"Execution time: {execution_time:.6f} seconds")
@@ -21,7 +21,7 @@ def execute(experiment, instance):
 
 def alg_backtracking(W, items):
     n = len(items)
-    best_value = [0]  # Usamos uma lista para manter o valor máximo atualizado
+    best_value = [0]
 
     def backtrack(i, current_weight, current_value):
         if current_weight > W:
@@ -29,10 +29,10 @@ def alg_backtracking(W, items):
         best_value[0] = max(best_value[0], current_value)
         if i == n:
             return
-        # Escolhe o item atual
-        backtrack(i + 1, current_weight + items[i][0], current_value + items[i][1])
-        # Não escolhe o item atual
+        if current_weight + items[i][0] <= W:
+            backtrack(i + 1, current_weight + items[i][0], current_value + items[i][1])
         backtrack(i + 1, current_weight, current_value)
+
     
     backtrack(0, 0, 0)
     return best_value[0]

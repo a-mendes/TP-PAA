@@ -23,7 +23,6 @@ def knapsack_branch_and_bound(W, items):
     n = len(items)
     items = sorted(items, key=lambda x: x[1] / x[0], reverse=True)
 
-
     def bound(i, w, v):
         if w > W:
             return 0
@@ -42,7 +41,7 @@ def knapsack_branch_and_bound(W, items):
         best_value = max(best_value, v)
         if i == n:
             return best_value
-        if bound(i, w, v, best_value) <= best_value:
+        if bound(i, w, v) <= best_value:
             return best_value
         best_value = branch_and_bound(i + 1, w + items[i][0], v + items[i][1], best_value)
         best_value = branch_and_bound(i + 1, w, v, best_value)

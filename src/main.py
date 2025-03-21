@@ -1,5 +1,6 @@
 import algorithms.dynamic_programming as dp
 import algorithms.branch_and_bound as bd
+import algorithms.backtracking as bt
 import utils as ut
 
 def experiment_dynamic_programming(experiment):
@@ -23,7 +24,15 @@ def experiment_branch_and_bound(experiment):
         bd.execute(experiment, i)
 
 def experiment_backtracking(experiment):
-    pass
+    print("\nBacktracking\n")
+    instance_start = ut.last_instance_executed(experiment, ut.c.BACKTRACKING)  
+    if instance_start == 0:
+        ut.delete_logs(experiment, ut.c.BACKTRACKING)  
+
+    for i in range(instance_start + 1, 21):
+        print(f"Instance {i}")
+        bt.execute(experiment, i)
+
 
 def plot_results(experiment):
     ut.plot_results(experiment)
